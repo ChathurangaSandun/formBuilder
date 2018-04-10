@@ -104,7 +104,7 @@ jQuery(function($) {
       }];
 
   var typeUserDisabledAttrs = {
-    autocomplete: ['access']
+    autocomplete: ['access'],
   };
 
   var typeUserAttrs = {
@@ -122,7 +122,7 @@ jQuery(function($) {
   };
 
   // test disabledAttrs
-  var disabledAttrs = ['placeholder'];
+  var disabledAttrs = ['placeholder', ];
 
   var fbOptions = {
     subtypes: {
