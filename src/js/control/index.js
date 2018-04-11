@@ -21,6 +21,6 @@ export default {
   controlFineUploader,
   controlTextarea,
   controlTinymce,
-  controlQuill
+  controlQuill,
 };
 
