@@ -105,6 +105,8 @@ jQuery(function($) {
 
   var typeUserDisabledAttrs = {
     autocomplete: ['access'],
+    starRating: ['label', 'required', 'access'],
+    button: ['access']
   };
 
   var typeUserAttrs = {
@@ -119,6 +121,7 @@ jQuery(function($) {
         style: 'border: 1px solid red'
       }
     }
+    
   };
 
   // test disabledAttrs

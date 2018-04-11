@@ -418,17 +418,18 @@ const FormBuilder = function(opts, element) {
   }
 
   const defaultFieldAttrs = type => {
-    const defaultAttrs = ['required', 'label', 'description', 'placeholder', 'className', 'name', 'access', 'value']
+    const defaultAttrs = [ 'label', 'description', 'placeholder', 'className', 'name', 'access', 'value']
     let noValFields = ['header', 'paragraph', 'file', 'autocomplete'].concat(d.optionFields)
+    
 
     let valueField = !utils.inArray(type, noValFields)
-
+    // attrs in types
     const typeAttrsMap = {
       autocomplete: defaultAttrs.concat(['options']),
       button: ['label', 'subtype', 'style', 'className', 'name', 'value', 'access'],
       checkbox: [
         'required',
-        'label',
+        'label', 
         'description',
         'toggle',
         'inline',
@@ -467,6 +468,7 @@ const FormBuilder = function(opts, element) {
       utils.remove('value', typeAttrs)
     }
 
+
     return typeAttrs || defaultAttrs
   }
 
@@ -475,12 +477,12 @@ const FormBuilder = function(opts, element) {
    * @param  {object} values configuration object for advanced fields
    * @return {String}        markup for advanced fields
    */
-  let advFields = values => {
+  let advFields = values => {    
     let { type } = values
     let advFields = []
     let fieldAttrs = defaultFieldAttrs(type)
     const advFieldMap = {
-      required: () => requiredField(values),
+      required: () => requiredField(values),      
       toggle: () => boolAttribute('toggle', values, { first: i18n.toggle }),
       inline: () => {
         let labels = {
@@ -489,7 +491,7 @@ const FormBuilder = function(opts, element) {
         }
 
         return boolAttribute('inline', values, labels)
-      },
+      }, 
       label: () => textAttribute('label', values),
       description: () => textAttribute('description', values),
       subtype: () => selectAttribute('subtype', values, subtypes[type]),
@@ -567,8 +569,9 @@ const FormBuilder = function(opts, element) {
       }
     }
 
-    Object.keys(fieldAttrs).forEach(index => {
-      let attr = fieldAttrs[index]
+    // file attrs
+    Object.keys(fieldAttrs).forEach(index => {            
+      let attr = fieldAttrs[index]      
       let useDefaultAttr = [true]
 
       if (opts.typeUserDisabledAttrs[type]) {
@@ -590,6 +593,7 @@ const FormBuilder = function(opts, element) {
       }
     })
 
+    // not much use
     // Append custom attributes as defined in typeUserAttrs option
     if (opts.typeUserAttrs[type]) {
       let customAttr = processTypeUserAttrs(opts.typeUserAttrs[type], values)
@@ -607,7 +611,6 @@ const FormBuilder = function(opts, element) {
    */
   function processTypeUserAttrs(typeUserAttr, values) {
     let advField = []
-
     for (let attribute in typeUserAttr) {
       if (typeUserAttr.hasOwnProperty(attribute)) {
         let orig = i18n[attribute]
@@ -842,7 +845,7 @@ const FormBuilder = function(opts, element) {
    * @param  {Object} values
    * @return {String}
    */
-  const textAttribute = (attribute, values) => {
+  const textAttribute = (attribute, values) => {    
     let textArea = ['paragraph']
 
     let attrVal = values[attribute] || ''
@@ -873,7 +876,7 @@ const FormBuilder = function(opts, element) {
 
       if (attribute === 'label') {
         inputConfig.contenteditable = true
-        attributefield += m('div', attrVal, inputConfig).outerHTML
+        attributefield += m('div', attrVal, inputConfig).outerHTML        
       } else {
         inputConfig.value = attrVal
         inputConfig.type = 'text'
@@ -892,20 +895,20 @@ const FormBuilder = function(opts, element) {
         style: `display: ${visibility}`,
       })
     }
-
     return attributefield.outerHTML
   }
 
   const requiredField = fieldData => {
-    let { type } = fieldData
+    let { type } = fieldData    
     let noRequire = ['header', 'paragraph', 'button']
     let noMake = []
     let requireField = ''
-
+        
     if (utils.inArray(type, noRequire)) {
       noMake.push(true)
     }
-    if (!noMake.some(elem => elem === true)) {
+          
+    if (!noMake.some(elem => elem === true)) {      
       requireField = boolAttribute('required', fieldData, {
         first: i18n.required,
       })
@@ -913,6 +916,27 @@ const FormBuilder = function(opts, element) {
 
     return requireField
   }
+
+  /*
+  const disabledField = fieldData => {  
+    let { type } = fieldData    
+    let noRequire = []
+    let noMake = []
+    let disableField = ''
+
+    if (utils.inArray(type, noRequire)) {
+      noMake.push(true)
+    }
+          
+    if (!noMake.some(elem => elem === true)) {      
+      disableField = boolAttribute('disabled', fieldData, {
+        first: i18n.disabled,
+      })
+    }
+
+    return disableField
+  }
+  */
 
   // Append the new field to the editor
   let appendNewField = function(values, isNew = true) {
