@@ -22,14 +22,7 @@ jQuery(function($) {
         type: 'starRating'
       },
       icon: '🌟'
-    },
-    {
-      label: 'Image Uploader',
-      attrs: {
-        type: 'imageUploader'
-      },
-      icon: '🌟'
-    }
+    }   
   ];
 
   var replaceFields = [
