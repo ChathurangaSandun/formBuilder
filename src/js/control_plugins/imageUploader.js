@@ -8,7 +8,7 @@ window.fbControls.push(function(controlClass) {
   /**
    * Custom Image  Uploader class
    */
-  class controlImageUploader extends controlFineUploader {
+  class controlImageUploader extends controlClass {
 
     /**
      * Class configuration - return the icons & label related to this control
@@ -47,6 +47,6 @@ window.fbControls.push(function(controlClass) {
   }
 
   // register this control for the following types & text subtypes
-  controlClass.register('imageUploader', controlImageUploader, 'file');
+  controlClass.register('imageUploader', controlImageUploader);
   return controlImageUploader;
 });

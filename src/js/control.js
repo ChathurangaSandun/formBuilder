@@ -88,8 +88,9 @@ export default class control {
    */
   static register(types, controlClass, parentType) {
     // store subtypes as <type>.<subtype> in the register
+    console.log('prt', parentType, types);
     let prefix = parentType ? parentType + '.' : ''
-
+    
     // initialise the register
     if (!control.classRegister) {
       control.classRegister = {}

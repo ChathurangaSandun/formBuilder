@@ -22,7 +22,13 @@ jQuery(function($) {
         type: 'starRating'
       },
       icon: '🌟'
-    }   
+    },
+    {
+      label: 'Image uploader',
+      attres: {
+        type: 'imageUploader'
+      }
+    }
   ];
 
   var replaceFields = [
@@ -84,7 +90,8 @@ jQuery(function($) {
           label: 'Short Bio:',
           className: 'form-control'
         }]
-      }, {
+      },
+       {
         label: 'User Agreement',
         fields: [{
           type: 'header',
@@ -105,6 +112,7 @@ jQuery(function($) {
 
   var typeUserDisabledAttrs = {
     autocomplete: ['access'],
+    starRating: ['required']    
   };
 
   var typeUserAttrs = {
@@ -122,7 +130,7 @@ jQuery(function($) {
   };
 
   // test disabledAttrs
-  var disabledAttrs = ['placeholder', ];
+  var disabledAttrs = ['placeholder'];
 
   var fbOptions = {
     subtypes: {
@@ -140,9 +148,9 @@ jQuery(function($) {
       enable: true
     },
     sortableControls: true,
-    fields: fields,
-    templates: templates,
+    fields: fields,        
     inputSets: inputSets,
+    templates: templates,
     typeUserDisabledAttrs: typeUserDisabledAttrs,
     typeUserAttrs: typeUserAttrs,
     disableInjectedStyle: false,

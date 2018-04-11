@@ -49,6 +49,6 @@ window.fbControls.push(function(controlClass) {
   }
 
   // register this control for the following types & text subtypes
-  controlClass.register('starRating', controlStarRating);
+  controlClass.register('starRating', controlStarRating, null);
   return controlStarRating;
 });
