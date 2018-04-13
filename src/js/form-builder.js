@@ -447,6 +447,8 @@ const FormBuilder = function(opts, element) {
       number: defaultAttrs.concat(['min', 'max', 'step']),
       select: defaultAttrs.concat(['multiple', 'options']),
       textarea: defaultAttrs.concat(['subtype', 'maxlength', 'rows']),
+      // new attr
+      hyperlink: ['label', 'href', 'name', 'className', 'access'],
     }
 
     typeAttrsMap['checkbox-group'] = typeAttrsMap.checkbox
@@ -537,6 +539,8 @@ const FormBuilder = function(opts, element) {
           second: i18n.enableOtherMsg,
         }),
       options: () => fieldOptions(values),
+      // new attr
+      href: () => textAttribute('href', values)
     }
     let key
     let roles = values.role !== undefined ? values.role.split(',') : []
@@ -585,7 +589,7 @@ const FormBuilder = function(opts, element) {
         useDefaultAttr.push(false)
       }
 
-      if (useDefaultAttr.every(use => use === true)) {
+      if (useDefaultAttr.every(use => use === true)) {        
         advFields.push(advFieldMap[attr]())
       }
     })

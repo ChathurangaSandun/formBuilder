@@ -1,9 +1,10 @@
 export const defaultOptions = {
-  controlPosition: 'right',
+  controlPosition: 'left',
   append: false,
   actionButtons: [],
   controlOrder: [
     'autocomplete',
+    'hyperlink',
     'button',
     'checkbox',
     'checkbox-group',
@@ -16,7 +17,7 @@ export const defaultOptions = {
     'radio-group',
     'select',
     'text',
-    'textarea',
+    'textarea'
   ],
   dataType: 'json',
   // Array of fields to disable
@@ -186,6 +187,8 @@ export const defaultI18n = {
       viewJSON: '{  }',
       viewXML: '&lt;/&gt;',
       yes: 'Yes',
+      // new attr
+      href: 'Href'
     },
   },
 }
