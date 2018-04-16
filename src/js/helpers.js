@@ -31,11 +31,11 @@ export default class Helpers {
    * @param  {Object} event
    * @param  {Object} ui
    */
-  startMoving(event, ui) {
-    console.log('moving element');
+  startMoving(event, ui) {    
     ui.item.show().addClass('moving')
     this.doCancel = true
     this.from = ui.item.parent()
+    document.dispatchEvent(events.fieldDragStart);
   }
 
   /**
@@ -44,8 +44,7 @@ export default class Helpers {
    * @param  {Object} event
    * @param  {Object} ui
    */
-  stopMoving(event, ui) {
-    console.log('stop moving element');
+  stopMoving(event, ui) {    
     let _this = this
     ui.item.removeClass('moving')
     if (_this.doCancel) {
@@ -56,6 +55,7 @@ export default class Helpers {
     }
     _this.save()
     _this.doCancel = false
+    document.dispatchEvent(events.fieldDragStop);
   }
 
   /**
@@ -330,8 +330,7 @@ export default class Helpers {
    * Collect field attribute values and call fieldPreview to generate preview
    * @param  {Object} $field jQuery DOM element
    */
-  updatePreview($field) {
-    console.log('updated element');
+  updatePreview($field) {    
     let _this = this
     let d = this.d
     const fieldClass = $field.attr('class')
@@ -644,8 +643,7 @@ export default class Helpers {
    * @param {Boolean} animate whether to animate or not
    * @return {void}
    */
-  removeAllFields(stage, animate = true) {
-    console.log('remove all');
+  removeAllFields(stage, animate = true) {    
     let i18n = mi18n.current
     let opts = config.opts
     let fields = stage.querySelectorAll('li.form-field')
@@ -781,8 +779,7 @@ export default class Helpers {
    * @param  {String} fieldId
    * @param  {Boolean} animate
    */
-  toggleEdit(fieldId, animate = true) {
-    console.log('edit elemet');
+  toggleEdit(fieldId, animate = true) {    
     const field = document.getElementById(fieldId)
     const toggleBtn = $('.toggle-form', field)
     if (!toggleBtn.length) return
@@ -872,8 +869,7 @@ export default class Helpers {
    * @param  {Number}  animationSpeed
    * @return {Boolean} fieldRemoved returns true if field is removed
    */
-  removeField(fieldID, animationSpeed = 250) {    
-    console.log('remove element');
+  removeField(fieldID, animationSpeed = 250) {        
     let fieldRemoved = false
     let _this = this
     const form = this.d.stage

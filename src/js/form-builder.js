@@ -250,8 +250,7 @@ const FormBuilder = function(opts, element) {
   // Save field on change
   $stage.on('change blur keyup', previewSelectors, saveAndUpdate)
 
-  $('li', d.controls).click(evt => {
-    console.log('click start element');
+  $('li', d.controls).click(evt => {    
     let $control = $(evt.target).closest('li')
     h.stopIndex = undefined
     processControl($control)
@@ -281,8 +280,7 @@ const FormBuilder = function(opts, element) {
   }
 
   // builds the standard formbuilder datastructure for a feild definition
-  let prepFieldVars = function($field, isNew = false) {
-    console.log('1')
+  let prepFieldVars = function($field, isNew = false) {    
     let field = {}
     if ($field instanceof jQuery) {
       // get the default type etc & label for this field
@@ -479,8 +477,7 @@ const FormBuilder = function(opts, element) {
    * @param  {object} values configuration object for advanced fields
    * @return {String}        markup for advanced fields
    */
-  let advFields = values => {
-    console.log('addd');
+  let advFields = values => {    
     let { type } = values
     let advFields = []
     let fieldAttrs = defaultFieldAttrs(type)
@@ -922,8 +919,7 @@ const FormBuilder = function(opts, element) {
   }
 
   // Append the new field to the editor
-  let appendNewField = function(values, isNew = true) {
-    console.log('append new items');
+  let appendNewField = function(values, isNew = true) {    
     let type = values.type || 'text'
     let label = values.label || i18n[type] || i18n.label
     let disabledFieldButtons = opts.disabledFieldButtons[type] || values.disabledFieldButtons
@@ -1091,8 +1087,7 @@ const FormBuilder = function(opts, element) {
   // ---------------------- UTILITIES ---------------------- //
 
   // delete options
-  $stage.on('click touchstart', '.remove', e => {
-    console.log('remoove elements ssss');
+  $stage.on('click touchstart', '.remove', e => {    
     let $field = $(e.target).parents('.form-field:eq(0)')
     let field = $field[0]
     let type = field.getAttribute('type')
@@ -1128,8 +1123,7 @@ const FormBuilder = function(opts, element) {
   })
 
   // toggle fields
-  $stage.on('click touchstart', '.toggle-form, .close-field', function(e) {
-    console.log('Edit');
+  $stage.on('click touchstart', '.toggle-form, .close-field', function(e) {    
     document.dispatchEvent(events.fieldEdited)
     e.stopPropagation()
     e.preventDefault()
@@ -1260,8 +1254,7 @@ const FormBuilder = function(opts, element) {
   })
 
   // Copy field
-  $stage.on('click touchstart', '.icon-copy', function(e) {
-    console.log('copy elementeee');
+  $stage.on('click touchstart', '.icon-copy', function(e) {    
     document.dispatchEvent(events.fieldCoppied)
     e.preventDefault()
     let currentItem = $(e.target)
@@ -1275,9 +1268,7 @@ const FormBuilder = function(opts, element) {
 
   // Delete field
   $stage.on('click touchstart', '.delete-confirm', e => {
-    
     e.preventDefault()
-
     const buttonPosition = e.target.getBoundingClientRect()
     const bodyRect = document.body.getBoundingClientRect()
     const coords = {

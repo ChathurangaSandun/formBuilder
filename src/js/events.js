@@ -32,8 +32,11 @@ const events = {
   fieldAdded: createNewEvent('fieldAdded'),
   fieldRemoved: createNewEvent('fieldRemoved'),
   fieldRendered: createNewEvent('fieldRendered'), 
+  // custom events
   fieldCoppied: createNewEvent('fieldCoppied'),
   fieldEdited: createNewEvent('fieldEdited'), 
+  fieldDragStart: createNewEvent('fieldDragStart'), 
+  fieldDragStop: createNewEvent('fieldDragStop'), 
 }
 
 export default events
