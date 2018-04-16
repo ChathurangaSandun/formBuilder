@@ -9,7 +9,9 @@
  * @return {Event} event
  */
 function createNewEvent(eventName) {
+  console.log(eventName);
   let event
+  
   if (typeof Event === 'function') {
     event = new Event(eventName)
   } else {
@@ -29,7 +31,9 @@ const events = {
   formSaved: createNewEvent('formSaved'),
   fieldAdded: createNewEvent('fieldAdded'),
   fieldRemoved: createNewEvent('fieldRemoved'),
-  fieldRendered: createNewEvent('fieldRendered'),
+  fieldRendered: createNewEvent('fieldRendered'), 
+  fieldCoppied: createNewEvent('fieldCoppied'),
+  fieldEdited: createNewEvent('fieldEdited'), 
 }
 
 export default events

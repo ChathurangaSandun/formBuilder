@@ -251,6 +251,7 @@ const FormBuilder = function(opts, element) {
   $stage.on('change blur keyup', previewSelectors, saveAndUpdate)
 
   $('li', d.controls).click(evt => {
+    console.log('click start element');
     let $control = $(evt.target).closest('li')
     h.stopIndex = undefined
     processControl($control)
@@ -281,6 +282,7 @@ const FormBuilder = function(opts, element) {
 
   // builds the standard formbuilder datastructure for a feild definition
   let prepFieldVars = function($field, isNew = false) {
+    console.log('1')
     let field = {}
     if ($field instanceof jQuery) {
       // get the default type etc & label for this field
@@ -369,7 +371,7 @@ const FormBuilder = function(opts, element) {
    * @param  {Object} fieldData
    * @return {String} field options markup
    */
-  let fieldOptions = function(fieldData) {
+  let fieldOptions = function(fieldData) {    
     let { type, values, name } = fieldData
     let optionActions = [m('a', i18n.addOption, { className: 'add add-opt' })]
     let fieldOptions = [m('label', i18n.selectOptions, { className: 'false-label' })]
@@ -478,6 +480,7 @@ const FormBuilder = function(opts, element) {
    * @return {String}        markup for advanced fields
    */
   let advFields = values => {
+    console.log('addd');
     let { type } = values
     let advFields = []
     let fieldAttrs = defaultFieldAttrs(type)
@@ -920,6 +923,7 @@ const FormBuilder = function(opts, element) {
 
   // Append the new field to the editor
   let appendNewField = function(values, isNew = true) {
+    console.log('append new items');
     let type = values.type || 'text'
     let label = values.label || i18n[type] || i18n.label
     let disabledFieldButtons = opts.disabledFieldButtons[type] || values.disabledFieldButtons
@@ -1088,6 +1092,7 @@ const FormBuilder = function(opts, element) {
 
   // delete options
   $stage.on('click touchstart', '.remove', e => {
+    console.log('remoove elements ssss');
     let $field = $(e.target).parents('.form-field:eq(0)')
     let field = $field[0]
     let type = field.getAttribute('type')
@@ -1124,6 +1129,8 @@ const FormBuilder = function(opts, element) {
 
   // toggle fields
   $stage.on('click touchstart', '.toggle-form, .close-field', function(e) {
+    console.log('Edit');
+    document.dispatchEvent(events.fieldEdited)
     e.stopPropagation()
     e.preventDefault()
     if (e.handled !== true) {
@@ -1254,6 +1261,8 @@ const FormBuilder = function(opts, element) {
 
   // Copy field
   $stage.on('click touchstart', '.icon-copy', function(e) {
+    console.log('copy elementeee');
+    document.dispatchEvent(events.fieldCoppied)
     e.preventDefault()
     let currentItem = $(e.target)
       .parent()
@@ -1266,6 +1275,7 @@ const FormBuilder = function(opts, element) {
 
   // Delete field
   $stage.on('click touchstart', '.delete-confirm', e => {
+    
     e.preventDefault()
 
     const buttonPosition = e.target.getBoundingClientRect()
@@ -1378,15 +1388,15 @@ const FormBuilder = function(opts, element) {
     clearFields: animate => h.removeAllFields(d.stage, animate),
     showData: h.showData.bind(h),
     save: h.save.bind(h),
-    addField: (field, index) => {
+    addField: (field, index) => {      
       h.stopIndex = data.formData.length ? index : undefined
       prepFieldVars(field)
     },
     removeField: h.removeField.bind(h),
     getData: h.getFormData.bind(h),
-    setData: formData => {
+    setData: formData => {           
       h.stopIndex = undefined
-      h.removeAllFields(d.stage, false)
+      h.removeAllFields(d.stage, false)      
       loadFields(formData)
       h.save.call(h)
     },
@@ -1401,7 +1411,7 @@ const FormBuilder = function(opts, element) {
   return formBuilder
 }
 ;(function($) {
-  $.fn.formBuilder = function(options) {
+  $.fn.formBuilder = function(options) {    
     if (!options) {
       options = {}
     }

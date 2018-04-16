@@ -32,6 +32,7 @@ export default class Helpers {
    * @param  {Object} ui
    */
   startMoving(event, ui) {
+    console.log('moving element');
     ui.item.show().addClass('moving')
     this.doCancel = true
     this.from = ui.item.parent()
@@ -44,6 +45,7 @@ export default class Helpers {
    * @param  {Object} ui
    */
   stopMoving(event, ui) {
+    console.log('stop moving element');
     let _this = this
     ui.item.removeClass('moving')
     if (_this.doCancel) {
@@ -176,7 +178,7 @@ export default class Helpers {
    * @param  {Object} form aka stage, DOM element
    * @return {Object} formData
    */
-  prepData(form) {
+  prepData(form) {    
     let formData = []
     let d = this.d
     let _this = this
@@ -270,7 +272,7 @@ export default class Helpers {
    * @param {Object} stage DOM element
    * @return {XML|JSON} formData
    */
-  save(stage) {
+  save(stage) {    
     let _this = this
     let data = this.data
     if (!stage) {
@@ -329,6 +331,7 @@ export default class Helpers {
    * @param  {Object} $field jQuery DOM element
    */
   updatePreview($field) {
+    console.log('updated element');
     let _this = this
     let d = this.d
     const fieldClass = $field.attr('class')
@@ -607,7 +610,7 @@ export default class Helpers {
    * Confirm all fields will be removed then remove them
    * @param  {Object} e click event object
    */
-  confirmRemoveAll(e) {
+  confirmRemoveAll(e) {    
     let _this = this
     let formID = e.target.id.match(/frmb-\d{13}/)[0]
     let stage = document.getElementById(formID)
@@ -642,6 +645,7 @@ export default class Helpers {
    * @return {void}
    */
   removeAllFields(stage, animate = true) {
+    console.log('remove all');
     let i18n = mi18n.current
     let opts = config.opts
     let fields = stage.querySelectorAll('li.form-field')
@@ -760,7 +764,7 @@ export default class Helpers {
    * Close fields being editing
    * @param  {Object} stage
    */
-  closeAllEdit() {
+  closeAllEdit() {    
     const _this = this
     const fields = $('> li.editing', _this.d.stage)
     const toggleBtns = $('.toggle-form', _this.d.stage)
@@ -778,6 +782,7 @@ export default class Helpers {
    * @param  {Boolean} animate
    */
   toggleEdit(fieldId, animate = true) {
+    console.log('edit elemet');
     const field = document.getElementById(fieldId)
     const toggleBtn = $('.toggle-form', field)
     if (!toggleBtn.length) return
@@ -867,7 +872,8 @@ export default class Helpers {
    * @param  {Number}  animationSpeed
    * @return {Boolean} fieldRemoved returns true if field is removed
    */
-  removeField(fieldID, animationSpeed = 250) {
+  removeField(fieldID, animationSpeed = 250) {    
+    console.log('remove element');
     let fieldRemoved = false
     let _this = this
     const form = this.d.stage
@@ -916,7 +922,7 @@ export default class Helpers {
    * @param  {Object} buttonData
    * @return {Object} DOM element for action button
    */
-  processActionButtons(buttonData) {
+  processActionButtons(buttonData) {    
     let { label, events, ...attrs } = buttonData
     let data = this.data
     if (!label) {

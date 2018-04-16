@@ -3,8 +3,7 @@ export const defaultOptions = {
   append: false,
   actionButtons: [],
   controlOrder: [
-    'autocomplete',
-    'hyperlink',
+    'autocomplete',    
     'button',
     'checkbox',
     'checkbox-group',
@@ -17,7 +16,8 @@ export const defaultOptions = {
     'radio-group',
     'select',
     'text',
-    'textarea'
+    'textarea',
+    'hyperlink'
   ],
   dataType: 'json',
   // Array of fields to disable

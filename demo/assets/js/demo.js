@@ -239,4 +239,11 @@ jQuery(function($) {
   document.getElementById('edit-form').onclick = function() {
     toggleEdit();
   };
+
+  document.addEventListener('fieldAdded', function(e) { alert("FieldAdded"); });
+  document.addEventListener('fieldRemoved', function(e) { alert("FieldRemoved"); });
+  // custom defined
+  document.addEventListener('fieldCoppied', function(e) { alert("FieldCoppied"); });
+  document.addEventListener('fieldEdited', function(e) { alert("FieldEdited"); });
+  
 });

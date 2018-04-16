@@ -10,6 +10,15 @@ export default class controlHyperlink extends control {
     */
   configure() {}
 
+  static get definition() {
+    return {
+      icon: 'A',
+      i18n: {
+        default: 'Hyperlink'
+      }
+    };
+  }
+
   /**
    * build a text DOM element, supporting other jquery text form-control's
    * @return {Object} DOM Element to be injected into the form.
@@ -17,7 +26,6 @@ export default class controlHyperlink extends control {
   build() {
     return {
       field: this.markup('a', this.label, this.config),
-      layout: 'noLabel'
     };
   }
 }
