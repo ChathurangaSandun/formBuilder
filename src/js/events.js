@@ -6,12 +6,11 @@
 /**
  * Wrapper to deal with ie11
  * @param {String} eventName
+ * @param {details} details
  * @return {Event} event
  */
-function createNewEvent(eventName) {
-  console.log(eventName);
-  let event
-  
+function createNewEvent(eventName) {  
+  let event  
   if (typeof Event === 'function') {
     event = new Event(eventName)
   } else {

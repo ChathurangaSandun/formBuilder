@@ -780,6 +780,7 @@ export default class Helpers {
    * @param  {Boolean} animate
    */
   toggleEdit(fieldId, animate = true) {    
+    document.dispatchEvent(events.fieldEdited)
     const field = document.getElementById(fieldId)
     const toggleBtn = $('.toggle-form', field)
     if (!toggleBtn.length) return
@@ -793,7 +794,6 @@ export default class Helpers {
       $('.prev-holder', field).toggle()
       editPanel.toggle()
     }
-    this.updatePreview($(field))
   }
 
   /**

@@ -10,9 +10,12 @@ export default class controlHyperlink extends control {
     */
   configure() {}
 
+   /**
+       * Define cotroller icon and name
+    */
   static get definition() {
     return {
-      icon: 'A',
+      icon: '<b>A</b>',
       i18n: {
         default: 'Hyperlink'
       }

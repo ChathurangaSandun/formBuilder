@@ -1,5 +1,5 @@
 export const defaultOptions = {
-  controlPosition: 'left',
+  controlPosition: 'right',
   append: false,
   actionButtons: [],
   controlOrder: [

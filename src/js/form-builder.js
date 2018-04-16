@@ -1123,8 +1123,7 @@ const FormBuilder = function(opts, element) {
   })
 
   // toggle fields
-  $stage.on('click touchstart', '.toggle-form, .close-field', function(e) {    
-    document.dispatchEvent(events.fieldEdited)
+  $stage.on('click touchstart', '.toggle-form, .close-field', function(e) { 
     e.stopPropagation()
     e.preventDefault()
     if (e.handled !== true) {

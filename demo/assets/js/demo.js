@@ -240,11 +240,16 @@ jQuery(function($) {
     toggleEdit();
   };
 
-  document.addEventListener('fieldAdded', function(e) { alert("FieldAdded"); });
+  document.addEventListener('fieldAdded', function(e) {
+     alert("FieldAdded"); 
+     console.log(e);
+  });
   document.addEventListener('fieldRemoved', function(e) { alert("FieldRemoved"); });
   // custom defined
   document.addEventListener('fieldCoppied', function(e) { alert("FieldCoppied"); });
-  document.addEventListener('fieldEdited', function(e) { alert("FieldEdited"); });
+  document.addEventListener('fieldEdited', function(e) { 
+    alert("FieldEdited");    
+ });
   document.addEventListener('fieldDragStart', function(e) { alert("Field Drag Start"); });
   document.addEventListener('fieldDragStop', function(e) { alert("Field Drag Stop"); });
   

@@ -103,7 +103,7 @@ class FormRender {
         this.appendChild(renderedFormWrap)
         fields.forEach(field => {
           renderedFormWrap.appendChild(field)
-          field.dispatchEvent(events.fieldRendered)
+          field.dispatchEvent(events.fieldRendered);
         })
       }
     }
